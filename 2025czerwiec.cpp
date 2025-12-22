@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 using namespace std;
+int c = 0;
 int skroc(int x) 
 {
     int y = x % 10;
@@ -18,6 +19,7 @@ int ost(int x)
 }
 int f(int a, int b) 
 {
+    c++;
     if (b == 0)
         return 0;
     else 
@@ -35,7 +37,6 @@ int f(int a, int b)
 }
 int main()
 {
-    cout << f(42,2) << endl;
-    cout << f(4, 125) << endl;
-    cout << f(103, 104) << endl;
+    f(987654321, 123456789);
+    cout << c;
 }
