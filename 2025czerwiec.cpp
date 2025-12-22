@@ -19,7 +19,6 @@ int ost(int x)
 }
 int f(int a, int b) 
 {
-    c++;
     if (b == 0)
         return 0;
     else 
@@ -30,6 +29,7 @@ int f(int a, int b)
         while (k > 0) 
         {
             w = w + a;
+            c++;
             k = k - 1;
         }
         return w;
@@ -37,6 +37,8 @@ int f(int a, int b)
 }
 int main()
 {
-    f(987654321, 123456789);
-    cout << c;
+    
+    cout << f(2024, 1000) << " " << c << endl;
+    c = 0;
+    cout << f(2024, 1234) << " " << c << endl;
 }
