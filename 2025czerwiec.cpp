@@ -11,25 +11,17 @@ int ten(int x)
 	}
 	return res;
 }
-int nwd(int a, int b) 
-{
-	int pom;
-	while (b != 0)
-	{
-		pom = b;
-		b = a % b;
-		a = pom;
-	}
-	return a;
-}
 int main()
 {
-	int coun = 0;
+	int max = 0;
+	int prev = 0;
 	string blank = "";
-	ifstream text("C:\\Users\\user\\Downloads\\informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki\\informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki\\liczby1.txt");
+	ifstream text("C:\\Users\\user\\Downloads\\informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki\\informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki\\liczby2.txt");
 	while (getline(text, blank))
 	{
-		int k = stoi(blank);
+		int k = stoi(blank) * stoi(blank);
+		int n = stoi(blank);
+		int coun = 0;
 		int a = 0;
 		int b = 0;
 		int leng = 0;
@@ -39,10 +31,20 @@ int main()
 			cop = cop / 10;
 			leng++;
 		}
-		b = k % ten(leng / 2);
-		a = (k / ten(leng / 2));
-		if (nwd(a, b) == 1)
-			coun++;
+		for (int i = 1; i < leng; i++)
+		{
+			b = k % ten(i);
+			a = (k / ten(i));
+			if (a + b <= n) 
+			{
+				coun++;
+			}
+			if (coun > max) 
+			{
+				prev = n;
+				max = coun;
+			}
+		}
 	}
-	cout << coun << endl;
+	cout << prev << " " << max << endl;
 }
