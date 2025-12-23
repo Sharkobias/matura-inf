@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 int ten(int x) 
 {
@@ -9,19 +11,38 @@ int ten(int x)
 	}
 	return res;
 }
+int nwd(int a, int b) 
+{
+	int pom;
+	while (b != 0)
+	{
+		pom = b;
+		b = a % b;
+		a = pom;
+	}
+	return a;
+}
 int main()
 {
-	int k = 123456;
-	int a = 0;
-	int b = 0;
-	int leng = 0;
-	int cop = k;
-	while (cop != 0) 
+	int coun = 0;
+	string blank = "";
+	ifstream text("C:\\Users\\user\\Downloads\\informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki\\informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki\\liczby1.txt");
+	while (getline(text, blank))
 	{
-		cop = cop / 10;
-		leng++;
-	} 
-	b = k % ten(leng / 2);
-	a = (k / ten(leng/2));
-	cout << a << " " << b << endl;
+		int k = stoi(blank);
+		int a = 0;
+		int b = 0;
+		int leng = 0;
+		int cop = k;
+		while (cop != 0)
+		{
+			cop = cop / 10;
+			leng++;
+		}
+		b = k % ten(leng / 2);
+		a = (k / ten(leng / 2));
+		if (nwd(a, b) == 1)
+			coun++;
+	}
+	cout << coun << endl;
 }
